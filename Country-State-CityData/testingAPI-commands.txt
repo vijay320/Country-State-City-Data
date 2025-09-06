@@ -1,0 +1,18 @@
+Testing the API
+
+Once you've set up the application, you can test it with the following endpoints:
+
+    Get all countries (no parameters):
+    text
+
+GET http://localhost:8080/api/locations
+
+Get states by country:
+text
+
+GET http://localhost:8080/api/locations?country=United States
+
+Get cities by state and country:
+text
+
+GET http://localhost:8080/api/locations?country=United States&state=California
