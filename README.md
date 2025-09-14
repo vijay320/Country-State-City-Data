@@ -1,48 +1,50 @@
 🌍 Country-State-City API
 
 A Spring Boot REST API that provides hierarchical location data (countries, states, and cities) with MySQL database integration.
+
 🚀 Features
 
-    Hierarchical Data: Retrieve countries, states, and cities in a nested structure
+   - *1. Hierarchical Data: Retrieve countries, states, and cities in a nested structure*
 
-    Parameter-based Filtering:
+   - *2. Parameter-based Filtering:*
 
-        No parameters → All countries
+       - No parameters → All countries
 
-        Country parameter → States of that country
+       - Country parameter → States of that country
 
-        Country + State parameters → Cities of that state
+       - Country + State parameters → Cities of that state
 
-    MySQL Integration: Persistent data storage with JPA
+   - *3. MySQL Integration: Persistent data storage with JPA*
 
-    RESTful Design: Clean API endpoints following REST principles
+   - *4. RESTful Design: Clean API endpoints following REST principles*
 
-📦 Technologies Used
+**📦 Technologies Used**
 
-    Java 17
+    - Java 17
 
-    Spring Boot 3.5
+    - Spring Boot 3.5
 
-    Spring Data JPA
+    - Spring Data JPA
 
-    MySQL Database
+    - MySQL Database
 
-    Maven
+    - Maven
 
-    Lombok
+    - Lombok
 
-🗄️ Database Schema
-sql
+**🗄️ Database Schema**
 
-countries (id, name)
-states (id, name, country_id)
-cities (id, name, state_id)
+``
+countries (id, name)``
+``states (id, name, country_id)``
+``cities (id, name, state_id)
+``
 
-🔌 API Endpoints
+**🔌 API Endpoints**
+
 Get Locations
-text
 
-GET /api/locations
+- GET /api/locations
 
 Parameters:
 
@@ -52,44 +54,45 @@ Parameters:
 
 Examples:
 
-    Get all countries:
-    bash
+- Get all countries:
 
-GET http://localhost:8080/api/locations
+``GET http://localhost:8080/api/locations``
 
-Get states of a country:
-bash
+- Get states of a country:
 
-GET http://localhost:8080/api/locations?country=United States
+``GET http://localhost:8080/api/locations?country=United States``
 
-Get cities of a state:
-bash
+- Get cities of a state:
 
-GET http://localhost:8080/api/locations?country=United States&state=California
+``GET http://localhost:8080/api/locations?country=United States&state=California``
 
 Sample Responses:
-json
 
 // All countries
+```json
 [
   {"id": 1, "name": "United States"},
   {"id": 2, "name": "India"},
   {"id": 3, "name": "Canada"}
 ]
+```
 
 // States of United States
+```json
 [
   {"id": 1, "name": "California"},
   {"id": 2, "name": "Texas"},
   {"id": 3, "name": "New York"}
 ]
-
+```
 // Cities of California
+```json
 [
   {"id": 1, "name": "Los Angeles"},
   {"id": 2, "name": "San Francisco"},
   {"id": 3, "name": "San Diego"}
 ]
+```
 
 🛠️ Installation & Setup
 Prerequisites
@@ -100,44 +103,50 @@ Prerequisites
 
     Maven 3.6+
 
-1. Clone the Repository
-bash
-
+***1. Clone the Repository***
+```
 git clone https://github.com/your-username/country-state-city-api.git
-cd country-state-city-api
+```
+- cd country-state-city-api
 
-2. Configure Database
+***2. Configure Database***
 
 Create MySQL database:
-sql
 
+```sql 
 CREATE DATABASE location_db;
+```
 
-3. Update Application Properties
+***3. Update Application Properties***
 
-Edit src/main/resources/application.properties:
+- Edit src/main/resources/application.properties:
 properties
 
+```
 spring.datasource.url=jdbc:mysql://localhost:3306/location_db
 spring.datasource.username=your_mysql_username
 spring.datasource.password=your_mysql_password
 
 spring.jpa.hibernate.ddl-auto=update
 spring.jpa.show-sql=true
+```
+***4. Build and Run***
 
-4. Build and Run
-bash
-
-# Using Maven
+- Using Maven
+```
 mvn clean install
 mvn spring-boot:run
+```
 
-# Or run directly
+- Or run directly
+```
 java -jar target/demo-0.0.1-SNAPSHOT.jar
+```
 
 The API will be available at: http://localhost:8080
+
 📁 Project Structure
-text
+```
 
 src/
 ├── main/
@@ -160,30 +169,30 @@ src/
 │   └── resources/
 │       ├── application.properties
 │       └── data.sql
-
+```
 🧪 Testing the API
 
-Use curl, Postman, or any HTTP client:
-bash
+- *Use curl, Postman, or any HTTP client:*
 
 # Test all endpoints
+```curl
 curl "http://localhost:8080/api/locations"
 curl "http://localhost:8080/api/locations?country=United%20States"
 curl "http://localhost:8080/api/locations?country=United%20States&state=California"
+```
 
 🔧 Configuration Options
 Database Initialization
 properties
 
 # For development - recreates schema on restart
-spring.jpa.hibernate.ddl-auto=create-drop
+``spring.jpa.hibernate.ddl-auto=create-drop``
 
 # For production - preserves data
-spring.jpa.hibernate.ddl-auto=update
+``spring.jpa.hibernate.ddl-auto=update``
 
-Sample Data
 
-The application includes sample data for:
+**The application includes sample data for:**
 
     Countries: United States, India, Canada
 
@@ -206,7 +215,7 @@ The application includes sample data for:
    - Check `spring.jpa.hibernate.ddl-auto` setting
    - Verify `data.sql` is in `src/main/resources/`
 
-🤝 Contributing
+**🤝 Contributing**
 
     Fork the project
 
@@ -218,11 +227,12 @@ The application includes sample data for:
 
     Open a Pull Request
 
-📝 License
+**📝 License**
 
 This project is licensed under the MIT License - see the LICENSE.md file for details.
-🆘 Support
+
+**🆘 Support**
 
 If you have any questions or issues, please open an issue on GitHub or contact the development team.
 
-⭐ Star this repo if you found it useful!
+***⭐ Star this repo if you found it useful!***
